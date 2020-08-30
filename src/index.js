@@ -16,6 +16,7 @@ import createSagaMiddleware from 'redux-saga';
 function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMovies);
     yield takeEvery('GET_GENRES', getGenres);
+    yield takeEvery('ADD_MOVIE', addMovie);
 }
 
 // Create sagaMiddleware
@@ -56,6 +57,15 @@ const movieReducer = (state = {}, action ) => {
     }
     console.log(state);
     return state;
+}
+
+function* addMovie(action) {
+    try {
+        let response = yield axios.post('/api/movie', action.payload )
+        yield put({ type: 'GET_MOVIES' })
+    } catch (error) {
+        console.log('error in addMovie', error);
+    }
 }
 
 // GET request to give movies to reducer
