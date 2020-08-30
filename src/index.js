@@ -54,6 +54,7 @@ const movieReducer = (state = {}, action ) => {
     if (action.type === 'ADD_MOVIE') {
         return action.payload
     }
+    console.log(state);
     return state;
 }
 
