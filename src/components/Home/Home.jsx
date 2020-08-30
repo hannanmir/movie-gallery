@@ -4,10 +4,6 @@ import { withRouter } from 'react-router-dom'
 import MovieListItem from '../MovieListItem/MovieListItem.jsx';
 
 class Home extends Component{
-    state= {
-        movieList: []
-    }
-
     componentDidMount() {
         console.log('App Mounted');
         this.setMovies();

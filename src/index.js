@@ -41,6 +41,14 @@ const genres = (state = [], action) => {
     }
 }
 
+// Stores which movie is clicked for details view
+const detailsReducer = (state = {}, action) => {
+    if (action.type === 'WHICH_MOVIE') {
+        return action.payload
+    }
+    return state;
+}
+
 function* getMovies() {
     try {
         let response = yield axios.get('/api/movie')
@@ -66,6 +74,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        detailsReducer,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
