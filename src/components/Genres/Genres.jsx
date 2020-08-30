@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 class Genres extends Component{
-
+    // renders all of the genres for a movie
     render() {
         return(
            <> {this.props.genre.name}</>

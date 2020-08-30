@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import swal from '@sweetalert/with-react';
 
 class AddMovie extends Component{
+    // intitial states are empty/ 0 used for input validation
     state = {
         newMovie: {
             title: '',
@@ -13,6 +14,7 @@ class AddMovie extends Component{
         }
     }
 
+    // allows various keys of the newMovie object to be changed with one function
     handleChangeFor = (event, propertyToChange) => {
         this.setState({
             newMovie: {
@@ -22,6 +24,7 @@ class AddMovie extends Component{
         })
     }
 
+    // valides input, then adds the newMovie to redux state, also clears the inputs and sets back to intial state
     addMovie = () => {
         if (this.state.newMovie.title === '' || this.state.newMovie.description === '' || this.state.newMovie.poster === '' || this.state.newMovie.genre_id === 0 ) {
             swal('Please input all fields!');
@@ -38,6 +41,7 @@ class AddMovie extends Component{
         }
     }
 
+    // cancles the add movie process, sets initial state, and routes back to home
     cancelMovie = () => {
         this.setState({
             newMovie: {
@@ -50,6 +54,7 @@ class AddMovie extends Component{
         this.props.history.push('/')
     }
 
+    // Inputs for title, description, poster url, and genre
     render() {
         return(
             <>
@@ -74,10 +79,11 @@ class AddMovie extends Component{
                         <option value="13">Superhero</option>
                         <option value="14">Psychological Thriller</option>
                         <option value="15">Spy</option>
-                     </select>
-                     <button onClick= {() => this.cancelMovie()}>Cancel</button>
+                    </select>
+                    <button onClick= {() => this.cancelMovie()}>Cancel</button>
                     <button onClick={ () => this.addMovie()}>Save Movie</button>
                 </div>
+                {/* shows the user the new movie info as they are entering it */}
                 <div className="detail">
                     <h2>{this.state.newMovie.title}</h2>
                     <img src={this.state.newMovie.poster} alt={this.state.newMovie.title} />

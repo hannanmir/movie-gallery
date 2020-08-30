@@ -3,14 +3,16 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 class MovieListItem extends Component{
-    // When the poster for a movie is clicked it indicates which movie is clicked and then gets the genre ids for it, then routes to details page for that movie
     clickMovie = () => {
+        // tells the server to store the movie that is clicked, then uses that info to render the details page
         this.props.dispatch({ type: 'WHICH_MOVIE', payload: this.props.movie })
+        // tells the server the movie that is clicked, then uses the id to get the genres 
         this.props.dispatch({ type: 'GET_GENRE_ID', payload: this.props.movie})
+        // routes to details page for the movie clicked
         this.props.history.push('/details')
-        console.log(this.props.movie);
     }
 
+    // Generates the movie poster and allows for it to be clicked
     render() {
         return(
             <div className="movie">
