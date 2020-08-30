@@ -11,6 +11,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Movies!</h1>
+        {/* Routes for all the pages, as well as a navbar */}
         <Router>
           <ul id='nav'>
             <h4><Link to='/AddMovie'>Add A Movie</Link></h4>

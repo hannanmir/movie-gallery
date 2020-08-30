@@ -82,6 +82,7 @@ function* getGenreId(action) {
     }
 }
 
+// POST reqeust to add the new movie input 
 function* addMovie(action) {
     try {
         yield axios.post('/api/movie', action.payload )
