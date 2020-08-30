@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+// GETs the genres from the database
 router.get('/', (req, res) => {
   let queryText = 'SELECT * FROM "genres" ORDER BY "id" DESC;';
   pool.query(queryText).then(result => {
@@ -13,6 +14,7 @@ router.get('/', (req, res) => {
   });
 });
 
+// GETs the genres for a specific movie
 router.get('/:id', (req, res) => {
   console.log('genre id', req.params.id);
   let queryText = `
