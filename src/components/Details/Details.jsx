@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Genres from '../Genres/Genres.jsx';
+import { Button } from '@material-ui/core';
 
 class Details extends Component{
     // displays the details for the clicked movie
@@ -18,7 +19,7 @@ class Details extends Component{
                 </p>
                 <img src={this.props.reduxState.detailsReducer.poster} alt={this.props.reduxState.detailsReducer.title} />
                 <p>{this.props.reduxState.detailsReducer.description}</p>
-                <button onClick= {() => this.props.history.push('/')}>Back to Movies</button>
+                <Button variant="contained" size="small" color="primary" onClick= {() => this.props.history.push('/')}>Back to Movies</Button>
             </div>
         )
     }

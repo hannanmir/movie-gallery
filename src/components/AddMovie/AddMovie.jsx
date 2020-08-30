@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import swal from '@sweetalert/with-react';
+import { Button } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
 
 class AddMovie extends Component{
     // intitial states are empty/ 0 used for input validation
@@ -59,9 +62,9 @@ class AddMovie extends Component{
         return(
             <>
                 <div>
-                    <input placeholder="Title" value={this.state.newMovie.title} onChange = {(event) => this.handleChangeFor(event, 'title')}/>
-                    <input placeholder="Description" value={this.state.newMovie.description} onChange = {(event) => this.handleChangeFor(event, 'description')}/>
-                    <input placeholder="Poster URL" value={this.state.newMovie.poster} onChange = {(event) => this.handleChangeFor(event, 'poster')}/>
+                    <TextField id="standard-basic" label="Title" value={this.state.newMovie.title} onChange = {(event) => this.handleChangeFor(event, 'title')}/>
+                    <TextField id="standard-basic" label="Description" value={this.state.newMovie.description} onChange = {(event) => this.handleChangeFor(event, 'description')}/>
+                    <TextField id="standard-basic" label="Poster URL" value={this.state.newMovie.poster} onChange = {(event) => this.handleChangeFor(event, 'poster')}/>
                     <select onChange={(value) => this.handleChangeFor(value, 'genre_id')} name="genre" id="genre">
                         <option value="0">Choose Genre</option>
                         <option value="1">Adventure</option>
@@ -80,8 +83,8 @@ class AddMovie extends Component{
                         <option value="14">Psychological Thriller</option>
                         <option value="15">Spy</option>
                     </select>
-                    <button onClick= {() => this.cancelMovie()}>Cancel</button>
-                    <button onClick={ () => this.addMovie()}>Save Movie</button>
+                    <Button variant="contained" size="small" color="secondary" onClick= {() => this.cancelMovie()}>Cancel</Button>
+                    <Button variant="contained" size="small" color="primary" onClick={ () => this.addMovie()}>Save Movie</Button>
                 </div>
                 {/* shows the user the new movie info as they are entering it */}
                 <div className="detail">
