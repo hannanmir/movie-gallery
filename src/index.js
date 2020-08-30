@@ -49,6 +49,15 @@ const detailsReducer = (state = {}, action) => {
     return state;
 }
 
+// Stores the newly added movie
+const movieReducer = (state = {}, action ) => {
+    if (action.type === 'ADD_MOVIE') {
+        return action.payload
+    }
+    return state;
+}
+
+// GET request to give movies to reducer
 function* getMovies() {
     try {
         let response = yield axios.get('/api/movie')
@@ -59,6 +68,7 @@ function* getMovies() {
     }
 }
 
+// GET request to give genres to reducer
 function* getGenres() {
     try {
         let response = yield axios.get('/api/genre')
@@ -75,6 +85,7 @@ const storeInstance = createStore(
         movies,
         genres,
         detailsReducer,
+        movieReducer,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

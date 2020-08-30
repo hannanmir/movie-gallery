@@ -9,6 +9,7 @@ class Details extends Component{
                 <h2>{this.props.reduxState.detailsReducer.title}</h2>
                 <img src={this.props.reduxState.detailsReducer.poster} alt={this.props.reduxState.detailsReducer.title} />
                 <p>{this.props.reduxState.detailsReducer.description}</p>
+                <button onClick= {() => this.props.history.push('/')}>Back to Movies</button>
             </div>
         )
     }
