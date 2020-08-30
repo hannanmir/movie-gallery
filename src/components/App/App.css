@@ -4,6 +4,20 @@
 
 .movie {
   float: left;
+  position: relative;
+  border-radius: 5px;
+  border-style: solid;
+  max-width: 185px;
+  max-height: 275px;
+  margin: 2em;
+  padding: 5px;
+  background-color: antiquewhite;
+}
+
+img {
+  width: 185px;
+  height: 275px;
+  border-radius: 15px;
 }
 
 .App-header {
