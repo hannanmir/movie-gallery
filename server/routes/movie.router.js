@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
       console.log('error getting movies', error);
       res.sendStatus(500);
   });
+})
 
 router.post('/', (req, res) => {
   console.log(req.body);
