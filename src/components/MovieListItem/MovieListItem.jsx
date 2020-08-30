@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import MovieListItem from '../MovieListItem/MovieListItem.jsx';
 
-class Home extends Component{
+class MovieListItem extends Component{
     render() {
         return(
             <>
-                <h4>Tester</h4>
             </>
         )
     }
@@ -19,4 +17,4 @@ const putReduxDataProps = (reduxState) => {
     }
 }
 
-export default connect(putReduxDataProps)(withRouter(Home));
+export default connect(putReduxDataProps)(withRouter(MovieListItem));
