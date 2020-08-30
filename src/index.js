@@ -17,6 +17,8 @@ function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMovies);
     yield takeEvery('GET_GENRES', getGenres);
     yield takeEvery('ADD_MOVIE', addMovie);
+    yield takeEvery('GET_GENRE_ID', getGenreId);
+
 }
 
 // Create sagaMiddleware
@@ -54,14 +56,35 @@ const detailsReducer = (state = {}, action) => {
 const movieReducer = (state = {}, action ) => {
     if (action.type === 'ADD_MOVIE') {
         return action.payload
+    // } else if (action.type === 'GET_GENRE_ID') {
+    //     return {...state, genres: action.payload}
     }
     console.log(state);
     return state;
 }
 
+// Stoes the genreid for current movie
+const genreIdReducer = (state = [], action ) => {
+    if (action.type === 'SET_GENRE_ID') {
+        return action.payload
+    }
+    console.log(state);
+    return state;
+}
+
+// get genre ids for specific movie
+function* getGenreId(action) {
+    try {
+        let response = yield axios.get(`/api/genre/${action.payload.id}`)
+        yield put({type: 'SET_GENRE_ID', payload: response.data})
+    } catch (error) {
+        console.log('error in getGenreId', error);   
+    }
+}
+
 function* addMovie(action) {
     try {
-        let response = yield axios.post('/api/movie', action.payload )
+        yield axios.post('/api/movie', action.payload )
         yield put({ type: 'GET_MOVIES' })
     } catch (error) {
         console.log('error in addMovie', error);
@@ -97,6 +120,7 @@ const storeInstance = createStore(
         genres,
         detailsReducer,
         movieReducer,
+        genreIdReducer,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

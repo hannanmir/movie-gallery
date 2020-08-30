@@ -6,6 +6,7 @@ class MovieListItem extends Component{
     clickMovie = () => {
         console.log('Clicked!');
         this.props.dispatch({ type: 'WHICH_MOVIE', payload: this.props.movie })
+        this.props.dispatch({ type: 'GET_GENRE_ID', payload: this.props.movie})
         this.props.history.push('/details')
         console.log(this.props.movie);
     }

@@ -38,6 +38,18 @@ class AddMovie extends Component{
         }
     }
 
+    cancelMovie = () => {
+        this.setState({
+            newMovie: {
+                title: '',
+                poster: '',
+                description: '',
+                genre_id: 0,    
+            }
+        })
+        this.props.history.push('/')
+    }
+
     render() {
         return(
             <>
@@ -63,13 +75,13 @@ class AddMovie extends Component{
                         <option value="14">Psychological Thriller</option>
                         <option value="15">Spy</option>
                      </select>
-                    <button onClick={ () => this.addMovie()}>Add Movie</button>
+                     <button onClick= {() => this.cancelMovie()}>Cancel</button>
+                    <button onClick={ () => this.addMovie()}>Save Movie</button>
                 </div>
                 <div className="detail">
                     <h2>{this.state.newMovie.title}</h2>
                     <img src={this.state.newMovie.poster} alt={this.state.newMovie.title} />
                     <p>{this.state.newMovie.description}</p>
-                    <button onClick= {() => this.props.history.push('/')}>Back to Movies</button>
                 </div>
             </>
         )
