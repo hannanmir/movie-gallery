@@ -13,6 +13,7 @@ _Duration: Weekend Rush_
 This app is a react based movie gallery. Users can browse the movies in the gallery and click on the poster for a movie to see more details. Further functionality includes the ability to add a movie along with a description and image path for the poster. This application is a fullstack full CRUD development.
 
 ## Screen Shot
+![Screenshot](https://github.com/hannanmir/movie-sagas/blob/master/public/images/Movies.png)
 
 
 ### Prerequisites
