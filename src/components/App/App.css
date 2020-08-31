@@ -1,6 +1,12 @@
 .App {
   text-align: center;
 }
+
+.add {
+  display: inline-flex
+}
+
+
 body {
   background-color: lightgrey;
 }
